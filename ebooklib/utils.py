@@ -16,6 +16,7 @@
 
 import io
 import mimetypes
+import os
 
 from lxml import etree
 
@@ -119,3 +120,8 @@ def get_pages_for_items(items):
     pages_from_docs = [get_pages(item) for item in items]
 
     return [item for pages in pages_from_docs for item in pages]
+
+
+def relpath(path, start):
+    rel = os.path.relpath(path, start)
+    return rel.replace('\\', '/')
